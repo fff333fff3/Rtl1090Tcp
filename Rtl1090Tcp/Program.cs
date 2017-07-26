@@ -13,13 +13,17 @@ namespace Rtl1090Tcp
         {
             //SampleBytesAndSave();
 
-            var bytes = File.ReadAllBytes("data.bin");
+            using (var tcp = new TcpClient("localhost", 31011))
+            using (var sr = new BinaryReader(tcp.GetStream()))
+                while (true)
+                    if (tcp.Available > 0)
+                    {
+                        var data = sr.ReadBytes(tcp.Available);
 
-            var msg = bytes.Take(16).ToArray();
-
-            var decoded = ModeS.Decode(msg);
-
-            Console.ReadKey();
+                        var decoded = ModeS.Decode(data);
+                        if (decoded != null)
+                            Console.WriteLine($"{decoded.AircraftAddress}:\t{(decoded.PotentiallyCorrupt ? "*" : "")}{decoded.Code}");
+                    }
         }
 
         private static void SampleBytesAndSave()

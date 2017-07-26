@@ -43,9 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADSBTypeCode.cs" />
     <Compile Include="ModeS.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TelemetryAirbornePositionBarometric.cs" />
+    <Compile Include="TelemetryAirbornePositionGeometric.cs" />
+    <Compile Include="TelemetryAirborneVelocity.cs" />
+    <Compile Include="TelemetryAircraftIdentification.cs" />
+    <Compile Include="TelemetryMessage.cs" />
+    <Compile Include="TelemetrySurfacePosition.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
