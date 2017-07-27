@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,16 +39,6 @@ namespace Rtl1090Tcp
             Console.ReadKey();
 
             // Going with BaseStation ASCII format instead -- http://woodair.net/sbs/Article/Barebones42_Socket_Data.htm
-        }
-    }
-
-    internal class BaseStation
-    {
-        public static TelemetryMessage Parse(string data)
-        {
-            var parts = data.Split(',');
-
-            return null;
         }
     }
 }

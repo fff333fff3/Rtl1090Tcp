@@ -43,10 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseStation.cs" />
     <Compile Include="BsTypeCode.cs" />
+    <Compile Include="ClickMessage.cs" />
+    <Compile Include="NewAircraftMessage.cs" />
+    <Compile Include="NewIdMessage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SelectionChangeMessage.cs" />
+    <Compile Include="StatusChangeMessage.cs" />
     <Compile Include="TelemetryMessage.cs" />
+    <Compile Include="TransmissionMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

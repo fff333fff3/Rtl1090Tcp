@@ -1,26 +1,31 @@
-﻿namespace Rtl1090Tcp
+﻿using System;
+using System.Collections.Generic;
+
+namespace Rtl1090Tcp
 {
     internal class TelemetryMessage
     {
-        private byte[] _time;
-        public byte MessageType { get; set; }
-        public byte SignalLevel { get; set; }
-        public int AircraftAddress { get; }
-        public BsTypeCode Code { get; }
-        public bool PotentiallyCorrupt { get; }
+        public BsTypeCode MessageType;
+        public int TransmissionType;
+        public int SessionId;
+        public int AircraftId;
+        public string HexId;
+        public int FlightId;
+        public DateTime DateTimeGenerated;
+        public DateTime DateTimeLogged;
 
-        public TelemetryMessage(int aircraftAddress, BsTypeCode typeCode, bool potentiallyCorrupt)
+        public TelemetryMessage(BsTypeCode typeMessageType, IReadOnlyList<string> parts)
         {
-            AircraftAddress = aircraftAddress;
-            Code = typeCode;
-            PotentiallyCorrupt = potentiallyCorrupt;
-        }
+            MessageType = typeMessageType;
 
-        public void SetWrapperData(byte type, byte[] time, byte signalLevel)
-        {
-            MessageType = type;
-            _time = time;
-            SignalLevel = signalLevel;
+            int.TryParse(parts[1], out TransmissionType);
+            int.TryParse(parts[2], out SessionId);
+            int.TryParse(parts[3], out AircraftId);
+            HexId = parts[4];
+            int.TryParse(parts[5], out FlightId);
+
+            DateTime.TryParse($"{parts[6]} {parts[7]}", out DateTimeGenerated);
+            DateTime.TryParse($"{parts[8]} {parts[9]}", out DateTimeLogged);
         }
     }
 }
