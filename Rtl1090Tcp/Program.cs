@@ -13,17 +13,20 @@ namespace Rtl1090Tcp
         {
             //SampleBytesAndSave();
 
-            using (var tcp = new TcpClient("localhost", 31011))
+            using (var tcp = new TcpClient("localhost", 30003))
             using (var sr = new BinaryReader(tcp.GetStream()))
                 while (true)
                     if (tcp.Available > 0)
                     {
                         var data = sr.ReadBytes(tcp.Available);
 
-                        var decoded = ModeS.Decode(data);
-                        if (decoded != null)
-                            Console.WriteLine($"{decoded.AircraftAddress}:\t{(decoded.PotentiallyCorrupt ? "*" : "")}{decoded.Code}");
+                        //var decoded = ModeS.Decode(data);
+                        //if (decoded != null)
+                        //    Console.WriteLine($"{decoded.AircraftAddress}:\t{(decoded.PotentiallyCorrupt ? "*" : "")}{decoded.Code}");
+                        Console.Write(string.Join("", data.Select(b => ((char)b).ToString())));
                     }
+
+            // Going with BaseStation ASCII format instead -- http://woodair.net/sbs/Article/Barebones42_Socket_Data.htm
         }
 
         private static void SampleBytesAndSave()
