@@ -6,10 +6,10 @@
         public byte MessageType { get; set; }
         public byte SignalLevel { get; set; }
         public int AircraftAddress { get; }
-        public ADSBTypeCode Code { get; }
+        public BsTypeCode Code { get; }
         public bool PotentiallyCorrupt { get; }
 
-        public TelemetryMessage(int aircraftAddress, ADSBTypeCode typeCode, bool potentiallyCorrupt)
+        public TelemetryMessage(int aircraftAddress, BsTypeCode typeCode, bool potentiallyCorrupt)
         {
             AircraftAddress = aircraftAddress;
             Code = typeCode;
