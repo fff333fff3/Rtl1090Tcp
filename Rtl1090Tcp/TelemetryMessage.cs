@@ -7,6 +7,7 @@ namespace Rtl1090Tcp
     {
         public BsTypeCode MessageType;
         public int TransmissionType;
+        public TransmissionTypes TransmissionTypeName;
         public int SessionId;
         public int AircraftId;
         public string HexId;
@@ -26,6 +27,22 @@ namespace Rtl1090Tcp
 
             DateTime.TryParse($"{parts[6]} {parts[7]}", out DateTimeGenerated);
             DateTime.TryParse($"{parts[8]} {parts[9]}", out DateTimeLogged);
+
+            if (TransmissionType != 0)
+                TransmissionTypeName = (TransmissionTypes)TransmissionType;
         }
+    }
+
+    public enum TransmissionTypes
+    {
+        Invalid,
+        IdentityAndCategory,
+        SurfacePosition,
+        AirbornePosition,
+        AirborneVelocity,
+        SurveillanceAltitude,
+        SurveillanceIdentity,
+        AirToAir,
+        AllCallReply
     }
 }
