@@ -6,7 +6,6 @@ namespace Rtl1090Tcp
     {
         public NewAircraftMessage(string[] parts) : base(BsTypeCode.NewAircraft, parts)
         {
-            throw new NotImplementedException();
         }
     }
 }

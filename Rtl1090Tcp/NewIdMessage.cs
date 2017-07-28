@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Rtl1090Tcp
 {
     internal class NewIdMessage : TelemetryMessage
     {
-        public NewIdMessage(string[] parts) : base(BsTypeCode.NewId, parts)
+        public int Callsign;
+
+        public NewIdMessage(IReadOnlyList<string> parts) : base(BsTypeCode.NewId, parts)
         {
-            throw new NotImplementedException();
+            int.TryParse(parts[10], out Callsign);
         }
     }
 }

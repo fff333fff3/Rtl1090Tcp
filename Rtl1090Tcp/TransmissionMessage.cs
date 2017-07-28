@@ -6,7 +6,6 @@ namespace Rtl1090Tcp
     {
         public TransmissionMessage(string[] parts) : base(BsTypeCode.TransmissionMessage, parts)
         {
-            throw new NotImplementedException();
         }
     }
 }

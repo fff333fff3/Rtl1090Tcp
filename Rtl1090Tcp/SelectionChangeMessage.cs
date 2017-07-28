@@ -1,12 +1,15 @@
 using System;
+using System.Collections.Generic;
 
 namespace Rtl1090Tcp
 {
     internal class SelectionChangeMessage : TelemetryMessage
     {
-        public SelectionChangeMessage(string[] parts) : base(BsTypeCode.SelectionChange, parts)
+        public int Callsign;
+
+        public SelectionChangeMessage(IReadOnlyList<string> parts) : base(BsTypeCode.SelectionChange, parts)
         {
-            throw new NotImplementedException();
+            int.TryParse(parts[10], out Callsign);
         }
     }
 }

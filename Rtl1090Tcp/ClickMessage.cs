@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Rtl1090Tcp
 {
@@ -6,7 +7,8 @@ namespace Rtl1090Tcp
     {
         public ClickMessage(string[] parts) : base(BsTypeCode.Click, parts)
         {
-            throw new NotImplementedException();
+            if (parts[3] != "-1" || parts[5] != "-1")
+                throw new InvalidDataException();
         }
     }
 }
