@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.IO;
+using System.Linq;
 
 namespace Rtl1090Tcp
 {
@@ -11,7 +13,7 @@ namespace Rtl1090Tcp
             if (parts.Length < 10)
                 return null;
 
-            switch (parts[0])
+            switch (Util.Get(parts, 0))
             {
                 case "SEL":
                     return new SelectionChangeMessage(parts);
@@ -24,9 +26,9 @@ namespace Rtl1090Tcp
                 case "CLK":
                     return new ClickMessage(parts);
                 case "MSG":
-                    return new TransmissionMessage(BsTypeCode.NewAircraft, parts);
+                    return new TransmissionMessage(parts);
                 default:
-                    return null;
+                    throw new InvalidDataException(string.Format(Lang.UnknownMessageType, Util.Get(parts, 0)));
             }
         }
     }

@@ -7,9 +7,9 @@ namespace Rtl1090Tcp
     {
         public int Callsign;
 
-        public NewIdMessage(IReadOnlyList<string> parts) : base(BsTypeCode.NewId, parts)
+        public NewIdMessage(string[] parts) : base(BsTypeCode.NewId, parts)
         {
-            int.TryParse(parts[10], out Callsign);
+            int.TryParse(Util.Get(parts, 10), out Callsign);
         }
     }
 }

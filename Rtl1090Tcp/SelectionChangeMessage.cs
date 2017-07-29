@@ -7,9 +7,9 @@ namespace Rtl1090Tcp
     {
         public int Callsign;
 
-        public SelectionChangeMessage(IReadOnlyList<string> parts) : base(BsTypeCode.SelectionChange, parts)
+        public SelectionChangeMessage(string[] parts) : base(BsTypeCode.SelectionChange, parts)
         {
-            int.TryParse(parts[10], out Callsign);
+            int.TryParse(Util.Get(parts, 10), out Callsign);
         }
     }
 }

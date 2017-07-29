@@ -44,8 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseStation.cs" />
+    <Compile Include="BsStatus.cs" />
     <Compile Include="BsTypeCode.cs" />
     <Compile Include="ClickMessage.cs" />
+    <Compile Include="Lang.cs" />
     <Compile Include="NewAircraftMessage.cs" />
     <Compile Include="NewIdMessage.cs" />
     <Compile Include="Program.cs" />
@@ -53,7 +55,9 @@
     <Compile Include="SelectionChangeMessage.cs" />
     <Compile Include="StatusChangeMessage.cs" />
     <Compile Include="TelemetryMessage.cs" />
+    <Compile Include="TrackedPlane.cs" />
     <Compile Include="TransmissionMessage.cs" />
+    <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

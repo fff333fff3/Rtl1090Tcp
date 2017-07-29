@@ -15,18 +15,18 @@ namespace Rtl1090Tcp
         public DateTime DateTimeGenerated;
         public DateTime DateTimeLogged;
 
-        public TelemetryMessage(BsTypeCode typeMessageType, IReadOnlyList<string> parts)
+        public TelemetryMessage(BsTypeCode typeMessageType, string[] parts)
         {
             MessageType = typeMessageType;
 
-            int.TryParse(parts[1], out TransmissionType);
-            int.TryParse(parts[2], out SessionId);
-            int.TryParse(parts[3], out AircraftId);
-            HexId = parts[4];
-            int.TryParse(parts[5], out FlightId);
+            int.TryParse(Util.Get(parts, 1), out TransmissionType);
+            int.TryParse(Util.Get(parts, 2), out SessionId);
+            int.TryParse(Util.Get(parts, 3), out AircraftId);
+            HexId = Util.Get(parts, 4);
+            int.TryParse(Util.Get(parts, 5), out FlightId);
 
-            DateTime.TryParse($"{parts[6]} {parts[7]}", out DateTimeGenerated);
-            DateTime.TryParse($"{parts[8]} {parts[9]}", out DateTimeLogged);
+            DateTime.TryParse($"{Util.Get(parts, 6)} {Util.Get(parts, 7)}", out DateTimeGenerated);
+            DateTime.TryParse($"{Util.Get(parts, 8)} {Util.Get(parts, 9)}", out DateTimeLogged);
 
             if (TransmissionType != 0)
                 TransmissionTypeName = (TransmissionTypes)TransmissionType;

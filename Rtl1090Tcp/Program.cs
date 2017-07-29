@@ -26,14 +26,15 @@ namespace Rtl1090Tcp
                 "MSG,7,496,742,51106E,27929,2011/03/06,07:57:36.523,2011/03/06,07:57:37.054,,3775,,,,,,,,,,0\n" +
                 "MSG,8,496,194,405F4E,27884,2010/02/19,17:58:13.244,2010/02/19,17:58:13.368,,,,,,,,,,,,0";
 
-            //using (var stream = new TcpClient("localhost", 30003))
-            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(input)))
-            using (var reader = new StreamReader(stream))
+            using (var stream = new TcpClient("localhost", 30003))
+            //using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(input)))
+            using (var reader = new StreamReader(stream.GetStream()))
                 while (!reader.EndOfStream)
                 {
                     var data = reader.ReadLine();
                     var message = BaseStation.Parse(data);
-                    Console.WriteLine(data);
+                    //Console.WriteLine(data);
+                    Console.WriteLine($"{message.DateTimeGenerated}\t{message.HexId}: {message.MessageType}{(message.MessageType == BsTypeCode.TransmissionMessage ? "/" + message.TransmissionTypeName : "")}");
                 }
 
             Console.ReadKey();
