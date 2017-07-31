@@ -6,8 +6,8 @@ namespace Rtl1090Tcp
     internal class TelemetryMessage
     {
         public BsTypeCode MessageType;
-        public int TransmissionType;
-        public TransmissionTypes TransmissionTypeName;
+        public int TransmissionTypeId;
+        public TransmissionTypes TransmissionType;
         public int SessionId;
         public int AircraftId;
         public string HexId;
@@ -19,7 +19,7 @@ namespace Rtl1090Tcp
         {
             MessageType = typeMessageType;
 
-            int.TryParse(Util.Get(parts, 1), out TransmissionType);
+            int.TryParse(Util.Get(parts, 1), out TransmissionTypeId);
             int.TryParse(Util.Get(parts, 2), out SessionId);
             int.TryParse(Util.Get(parts, 3), out AircraftId);
             HexId = Util.Get(parts, 4);
@@ -28,8 +28,8 @@ namespace Rtl1090Tcp
             DateTime.TryParse($"{Util.Get(parts, 6)} {Util.Get(parts, 7)}", out DateTimeGenerated);
             DateTime.TryParse($"{Util.Get(parts, 8)} {Util.Get(parts, 9)}", out DateTimeLogged);
 
-            if (TransmissionType != 0)
-                TransmissionTypeName = (TransmissionTypes)TransmissionType;
+            if (TransmissionTypeId != 0)
+                TransmissionType = (TransmissionTypes)TransmissionTypeId;
         }
     }
 

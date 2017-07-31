@@ -5,11 +5,11 @@ namespace Rtl1090Tcp
 {
     internal class NewIdMessage : TelemetryMessage
     {
-        public int Callsign;
+        public string Callsign;
 
         public NewIdMessage(string[] parts) : base(BsTypeCode.NewId, parts)
         {
-            int.TryParse(Util.Get(parts, 10), out Callsign);
+            Callsign = Util.Get(parts, 10);
         }
     }
 }

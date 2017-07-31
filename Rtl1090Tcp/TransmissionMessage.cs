@@ -10,44 +10,44 @@ namespace Rtl1090Tcp
         public string Callsign;
 
         public bool HasAltitude;
-        public int Altitude;
+        public double Altitude;
 
         public bool HasGroundSpeed;
-        public int GroundSpeed;
+        public double GroundSpeed;
 
         public bool HasGroundTrackAngle;
-        public int GroundTrackAngle;
+        public double GroundTrackAngle;
 
         public bool HasLatitude;
-        public int Latitude;
+        public double Latitude;
 
         public bool HasLongitude;
-        public int Longitude;
+        public double Longitude;
 
         public bool HasVerticalRate;
-        public int VerticalRate;
+        public double VerticalRate;
 
         public bool HasSquawk;
         public int Squawk;
 
         public bool HasAlert;
-        public int Alert;
+        public bool Alert;
 
         public bool HasEmergency;
-        public int Emergency;
+        public bool Emergency;
 
         public bool HasSpecialPositionIndicator;
-        public int SpecialPositionIndicator;
+        public bool SpecialPositionIndicator;
 
         public bool HasIsOnGround;
-        public int IsOnGround;
+        public bool IsOnGround;
 
         public TransmissionMessage(string[] parts) : base(BsTypeCode.TransmissionMessage, parts)
         {
-            if (TransmissionTypeName == TransmissionTypes.Invalid)
+            if (TransmissionType == TransmissionTypes.Invalid)
                 throw new InvalidDataException();
 
-            switch (TransmissionTypeName)
+            switch (TransmissionType)
             {
                 case TransmissionTypes.IdentityAndCategory:
                     // 10
@@ -80,17 +80,21 @@ namespace Rtl1090Tcp
             HasCallsign = Util.Get(parts, 0) == "";
             Callsign = Util.Get(parts, 10);
 
-            HasAltitude = int.TryParse(Util.Get(parts, 11), out Altitude);
-            HasGroundSpeed = int.TryParse(Util.Get(parts, 12), out GroundSpeed);
-            HasGroundTrackAngle = int.TryParse(Util.Get(parts, 13), out GroundTrackAngle);
-            HasLatitude = int.TryParse(Util.Get(parts, 14), out Latitude);
-            HasLongitude = int.TryParse(Util.Get(parts, 15), out Longitude);
-            HasVerticalRate = int.TryParse(Util.Get(parts, 16), out VerticalRate);
+            HasAltitude = double.TryParse(Util.Get(parts, 11), out Altitude);
+            HasGroundSpeed = double.TryParse(Util.Get(parts, 12), out GroundSpeed);
+            HasGroundTrackAngle = double.TryParse(Util.Get(parts, 13), out GroundTrackAngle);
+            HasLatitude = double.TryParse(Util.Get(parts, 14), out Latitude);
+            HasLongitude = double.TryParse(Util.Get(parts, 15), out Longitude);
+            HasVerticalRate = double.TryParse(Util.Get(parts, 16), out VerticalRate);
             HasSquawk = int.TryParse(Util.Get(parts, 17), out Squawk);
-            HasAlert = int.TryParse(Util.Get(parts, 18), out Alert);
-            HasEmergency = int.TryParse(Util.Get(parts, 19), out Emergency);
-            HasSpecialPositionIndicator = int.TryParse(Util.Get(parts, 20), out SpecialPositionIndicator);
-            HasIsOnGround = int.TryParse(Util.Get(parts, 21), out IsOnGround);
+            HasAlert = Util.Get(parts, 18) != "";
+            Alert = Util.Get(parts, 18) == "1";
+            HasEmergency = Util.Get(parts, 19) != "";
+            Emergency = Util.Get(parts, 19) == "1";
+            HasSpecialPositionIndicator = Util.Get(parts, 20) != "";
+            SpecialPositionIndicator = Util.Get(parts, 20) == "1";
+            HasIsOnGround = Util.Get(parts, 21) != "";
+            IsOnGround = Util.Get(parts, 21) == "1";
         }
     }
 }

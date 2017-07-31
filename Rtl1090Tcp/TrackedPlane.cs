@@ -13,23 +13,27 @@ namespace Rtl1090Tcp
         public int FlightId;
         public string Callsign;
 
-        public int Altitude;
-        public int GroundSpeed;
-        public int GroundTrackAngle;
-        public int Latitude;
-        public int Longitude;
-        public int VerticalRate;
-        public int Squawk;
-        public int Alert;
-        public int Emergency;
-        public int SpecialPositionIndicator;
-        public int IsOnGround;
+        public double Altitude;
+        public double GroundSpeed;
+        public double GroundTrackAngle;
+        public double Latitude;
+        public double Longitude;
+        public double VerticalRate;
+        public double Squawk;
+        public bool Alert;
+        public bool Emergency;
+        public bool SpecialPositionIndicator;
+        public bool IsOnGround;
 
-        public void Create(TelemetryMessage message)
+        public TrackedPlane(TelemetryMessage message)
         {
             AircraftId = message.AircraftId;
             HexIdent = message.HexId;
             FlightId = message.FlightId;
+
+            var transmissionMessage = message as TransmissionMessage;
+            if (transmissionMessage != null)
+                LoadMessage(transmissionMessage);
         }
 
         public void LoadMessage(TransmissionMessage message)
