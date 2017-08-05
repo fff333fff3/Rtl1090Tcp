@@ -1,6 +1,6 @@
-﻿namespace Rtl1090Tcp
+﻿namespace BaseStationDotNet
 {
-    internal enum BsTypeCode
+    public enum BsTypeCode
     {
         SelectionChange,
         NewId,

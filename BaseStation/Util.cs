@@ -1,4 +1,4 @@
-﻿namespace Rtl1090Tcp
+﻿namespace BaseStationDotNet
 {
     internal class Util
     {

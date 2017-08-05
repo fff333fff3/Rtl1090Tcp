@@ -1,9 +1,8 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
-namespace Rtl1090Tcp
+namespace BaseStationDotNet
 {
-    internal class ClickMessage : TelemetryMessage
+    public class ClickMessage : TelemetryMessage
     {
         public ClickMessage(string[] parts) : base(BsTypeCode.Click, parts)
         {

@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace Rtl1090Tcp
+﻿namespace BaseStationDotNet
 {
-    internal class NewAircraftMessage : TelemetryMessage
+    public class NewAircraftMessage : TelemetryMessage
     {
         public NewAircraftMessage(string[] parts) : base(BsTypeCode.NewAircraft, parts)
         {

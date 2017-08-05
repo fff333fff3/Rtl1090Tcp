@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 
-namespace Rtl1090Tcp
+namespace BaseStationDotNet
 {
-    internal class TransmissionMessage : TelemetryMessage
+    public class TransmissionMessage : TelemetryMessage
     {
         public bool HasCallsign;
         public string Callsign;

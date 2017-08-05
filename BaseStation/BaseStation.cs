@@ -1,10 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 
-namespace Rtl1090Tcp
+namespace BaseStationDotNet
 {
-    internal class BaseStation
+    public class BaseStation
     {
         public static TelemetryMessage Parse(string data)
         {

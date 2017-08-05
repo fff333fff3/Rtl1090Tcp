@@ -7,6 +7,7 @@ using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Timers;
+using BaseStationDotNet;
 using Humanizer;
 
 namespace Rtl1090Tcp

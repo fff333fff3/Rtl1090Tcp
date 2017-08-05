@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-
-namespace Rtl1090Tcp
+namespace BaseStationDotNet
 {
-    internal class SelectionChangeMessage : TelemetryMessage
+    public class SelectionChangeMessage : TelemetryMessage
     {
         public int Callsign;
 

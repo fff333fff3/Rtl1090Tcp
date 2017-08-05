@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Rtl1090Tcp
+namespace BaseStationDotNet
 {
-    class SimplePlaneTracker
+    public class SimplePlaneTracker
     {
         public List<TrackedPlane> Planes { get; set; } = new List<TrackedPlane>();
 
@@ -40,15 +38,15 @@ namespace Rtl1090Tcp
                 case BsTypeCode.StatusChange:
                     var foundStatus = Planes.Where(plane => plane.HexIdent == message.HexId).ToArray();
                     if (foundStatus.Length == 0 &&
-                        ((StatusChangeMessage) message).Status == StatusChangeMessage.BsStatus.Ok)
+                        ((StatusChangeMessage) message).Status == BsStatus.Ok)
                         Planes.Add(new TrackedPlane(message));
                     else if (foundStatus.Length == 1)
                         switch (((StatusChangeMessage) message).Status)
                         {
-                            case StatusChangeMessage.BsStatus.PositionLost:
-                            case StatusChangeMessage.BsStatus.SignalLost:
-                            case StatusChangeMessage.BsStatus.Remove:
-                            case StatusChangeMessage.BsStatus.Delete:
+                            case BsStatus.PositionLost:
+                            case BsStatus.SignalLost:
+                            case BsStatus.Remove:
+                            case BsStatus.Delete:
                                 Planes.RemoveAll(plane => plane.HexIdent == message.HexId);
                                 Console.Clear();
                                 break;

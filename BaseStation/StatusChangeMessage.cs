@@ -1,9 +1,8 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
-namespace Rtl1090Tcp
+namespace BaseStationDotNet
 {
-    internal partial class StatusChangeMessage : TelemetryMessage
+    public class StatusChangeMessage : TelemetryMessage
     {
         public BsStatus Status;
 

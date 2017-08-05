@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 
-namespace Rtl1090Tcp
+namespace BaseStationDotNet
 {
-    internal class TelemetryMessage
+    public class TelemetryMessage
     {
         public BsTypeCode MessageType;
         public int TransmissionTypeId;
