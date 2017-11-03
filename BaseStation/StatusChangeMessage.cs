@@ -29,5 +29,22 @@ namespace BaseStationDotNet
                     throw new InvalidDataException(string.Format(Lang.UnknownStatus, Util.Get(parts, 0)));
             }
         }
+
+        public StatusChangeMessage(BinaryReader reader)
+        {
+            Deserialize(reader);
+        }
+
+        public override void Deserialize(BinaryReader reader)
+        {
+            base.Deserialize(reader);
+            Status = (BsStatus) reader.ReadByte();
+        }
+
+        public override void Serialize(BinaryWriter writer)
+        {
+            base.Serialize(writer);
+            writer.Write((byte)Status);
+        }
     }
 }

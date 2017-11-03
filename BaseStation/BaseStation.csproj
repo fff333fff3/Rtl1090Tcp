@@ -44,6 +44,7 @@
     <Compile Include="BsStatus.cs" />
     <Compile Include="BsTypeCode.cs" />
     <Compile Include="ClickMessage.cs" />
+    <Compile Include="IBinarySerializable.cs" />
     <Compile Include="Lang.cs" />
     <Compile Include="NewAircraftMessage.cs" />
     <Compile Include="NewIdMessage.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="TelemetryMessage.cs" />
     <Compile Include="TrackedPlane.cs" />
     <Compile Include="TransmissionMessage.cs" />
+    <Compile Include="TransmissionTypes.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

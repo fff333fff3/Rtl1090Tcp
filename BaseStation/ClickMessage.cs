@@ -9,5 +9,10 @@ namespace BaseStationDotNet
             if (Util.Get(parts, 3) != "-1" || Util.Get(parts, 5) != "-1")
                 throw new InvalidDataException(Lang.ClickFieldsWereNotNull);
         }
+
+        public ClickMessage(BinaryReader reader)
+        {
+            Deserialize(reader);
+        }
     }
 }
